@@ -10,6 +10,62 @@
 </head>
 <body>
 
+<header class="header"></header>
+
+<main class="main">
+<div class="container">
+    <div class="terminal-wrapper">
+        <div class="terminal">
+
+            <div class="terminal-header">
+                <div class="terminal-header__inner">
+                    <div class="terminal-header__item-wrapper">
+                        <div class="terminal-header__item"></div>
+                        <div class="terminal-header__item"></div>
+                        <div class="terminal-header__item"></div>
+                    </div>
+                    <div class="terminal-header__item-wrapper">
+                        <h2 class="terminal-header__title">GIT Commit Creator</h2>
+                    </div>
+                    <div class="terminal-header__item-wrapper"></div>
+                </div>
+            </div>
+
+            <div class="terminal-body">
+                <div class="terminal-form-wrapper">
+                    <form class="form terminal-form" id="commitCreatorForm">
+                        <label class="terminal-form__label" for="commitCreatorForm" >[add git commit -m]
+                            <input type="checkbox" class="terminal-form__input"></label>
+                        <label class="terminal-form__label" for="commitCreatorForm" >[select type]
+                            <select>
+                                <option value="apple">init:</option>
+                                <option value="orange">add:</option>
+                                <option value="banana">feat:</option>
+                                <option value="grape">fix:</option>
+                            </select></label>
+                        <label class="terminal-form__label" for="commitCreatorForm" >[add optional scope]
+                            <input type="text" class="terminal-form__input"></label>
+                        <label class="terminal-form__label" for="commitCreatorForm" >[add date and time]
+                            <input type="text" class="terminal-form__input"></label>
+                        <label class="terminal-form__label" for="commitCreatorForm" >&lt;description&gt;
+                            <textarea name="" id="" cols="30" rows="10" class="terminal-form__input"></textarea></label>
+                        <label class="terminal-form__label" for="commitCreatorForm" >[optional body]
+                            <input type="text" class="terminal-form__input"></label>
+                        <label class="terminal-form__label" for="commitCreatorForm" >[optional footer]
+                            <input type="text" class="terminal-form__input"></label>
+                        <button class="terminal-form__btn">create</button>
+                        <label class="terminal-form__label" for="commitCreatorForm" >[result]
+                            <textarea name="" id="" cols="30" rows="10" class="terminal-form__input"></textarea></label>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</main>
+
+<footer class="footer"></footer>
 
 <script src="scripts/main.js"></script>
 </body>
