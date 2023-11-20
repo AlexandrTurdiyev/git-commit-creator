@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Git commit creator v1</title>
-    <link rel="stylesheet" href="styles/main.scss">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
@@ -19,12 +20,12 @@
 
             <div class="terminal-header">
                 <div class="terminal-header__inner">
-                    <div class="terminal-header__item-wrapper">
-                        <div class="terminal-header__item"></div>
-                        <div class="terminal-header__item"></div>
-                        <div class="terminal-header__item"></div>
+                    <div class="terminal-header__item-wrapper terminal-header__item-wrapper--padding-left">
+                        <div class="terminal-header__item terminal-header__item--red"></div>
+                        <div class="terminal-header__item terminal-header__item--yellow"></div>
+                        <div class="terminal-header__item terminal-header__item--green"></div>
                     </div>
-                    <div class="terminal-header__item-wrapper">
+                    <div class="terminal-header__item-wrapper terminal-header__item-wrapper--center">
                         <h2 class="terminal-header__title">GIT Commit Creator</h2>
                     </div>
                     <div class="terminal-header__item-wrapper"></div>
@@ -34,28 +35,97 @@
             <div class="terminal-body">
                 <div class="terminal-form-wrapper">
                     <form class="form terminal-form" id="commitCreatorForm">
-                        <label class="terminal-form__label" for="commitCreatorForm" >[add git commit -m]
-                            <input type="checkbox" class="terminal-form__input"></label>
-                        <label class="terminal-form__label" for="commitCreatorForm" >[select type]
-                            <select>
-                                <option value="apple">init:</option>
-                                <option value="orange">add:</option>
-                                <option value="banana">feat:</option>
-                                <option value="grape">fix:</option>
-                            </select></label>
-                        <label class="terminal-form__label" for="commitCreatorForm" >[add optional scope]
-                            <input type="text" class="terminal-form__input"></label>
-                        <label class="terminal-form__label" for="commitCreatorForm" >[add date and time]
-                            <input type="text" class="terminal-form__input"></label>
-                        <label class="terminal-form__label" for="commitCreatorForm" >&lt;description&gt;
-                            <textarea name="" id="" cols="30" rows="10" class="terminal-form__input"></textarea></label>
-                        <label class="terminal-form__label" for="commitCreatorForm" >[optional body]
-                            <input type="text" class="terminal-form__input"></label>
-                        <label class="terminal-form__label" for="commitCreatorForm" >[optional footer]
-                            <input type="text" class="terminal-form__input"></label>
-                        <button class="terminal-form__btn">create</button>
-                        <label class="terminal-form__label" for="commitCreatorForm" >[result]
-                            <textarea name="" id="" cols="30" rows="10" class="terminal-form__input"></textarea></label>
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="commit-m" >[add git commit -m]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <input class="terminal-form__input" id="commit-m" type="checkbox" >
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="selectCommitType" >[select type]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <select class="terminal-form__input"
+                                        id="selectCommitType">
+                                    <option value="apple">init:</option>
+                                    <option value="orange">add:</option>
+                                    <option value="banana">feat:</option>
+                                    <option value="grape">fix:</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="optionalCommitScope" >[add optional scope]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <input class="terminal-form__input terminal-form__input--full-width" id="optionalCommitScope" type="text" >
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="commitDateTime" >[add date and time]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <input class="terminal-form__input terminal-form__input--full-width"
+                                       id="commitDateTime" type="text" >
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="commitDescription" >&lt;description&gt;</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <textarea class="terminal-form__input terminal-form__input--full-width"
+                                          name="" id="commitDescription" cols="30" rows="5" ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="optionalCommitBody" >[optional body]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <input class="terminal-form__input terminal-form__input--full-width"
+                                       id="optionalCommitBody" type="text" >
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="optionalCommitFooter" >[optional footer]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <input class="terminal-form__input terminal-form__input--full-width"
+                                       id="optionalCommitFooter" type="text">
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <button class="terminal-form__input terminal-form__btn">create</button>
+                            </div>
+                        </div>
+
+                        <div class="terminal-form__item">
+                            <div class="terminal-form__label-wrapper">
+                                <label class="terminal-form__label" for="commitResult" >[result]</label>
+                            </div>
+                            <div class="terminal-form__input-wrapper">
+                                <textarea class="terminal-form__input terminal-form__input--full-width"
+                                          name="" id="commitResult" cols="30" rows="5" ></textarea>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'CallingCode-Regular';
+  src: url('fonts/CallingCode-Regular.ttf') format('truetype');
+} /* Font: CallingCode-Regular */
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+} /* Font: Oswald */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.terminal-wrapper {
+  width: 100%;
+}
+
+.terminal {
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 2px 2px 15px #000000;
+}
+.terminal-header {
+  &__inner {
+    background-color: #D9D9D9;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+  }
+  &__item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 33.3%;
+  }
+  &__item-wrapper--padding-left {
+    padding-left: 15px;
+  }
+  &__item-wrapper--center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item {
+    background-color: #484848;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  &__item--red {background-color: #FD6154;}
+  &__item--yellow {background-color: #FDBB30;}
+  &__item--green {background-color: #2CC642;}
+  &__title {
+    color: #484848;
+    font-size: 24px;
+    font-family: Oswald;
+    font-weight: 700;
+    word-wrap: break-word
+  }
+}
+
+.terminal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 750px;
+  border-radius: 0 0 20px 20px;
+}
+
+.terminal-form-wrapper {
+  max-width: 940px;
+  width: 100%;
+}
+.terminal-form {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  font-family: CallingCode-Regular;
+  font-size: 1.5rem;
+  gap: 0.5rem;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  &__label-wrapper {
+    text-align: right;
+    width: 30%;
+  }
+  &__label {
+    white-space: nowrap;
+  }
+  &__input-wrapper {
+    width: 70%;
+  }
+  &__input {
+    background-color: #D9D9D9;
+    border: 1px solid #484848;
+    border-radius: 20px;
+    padding: 0 1rem 0 1rem;
+  }
+  &__btn {
+    padding: 0 1rem 0 1rem;
+  }
+  &__input--full-width {width: 100%}
+
+}
