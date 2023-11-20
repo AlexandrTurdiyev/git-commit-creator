@@ -108,6 +108,7 @@
 }
 .terminal-form__label {
   white-space: nowrap;
+  vertical-align: center;
 }
 .terminal-form__input-wrapper {
   width: 70%;
@@ -124,5 +125,59 @@
 .terminal-form__input--full-width {
   width: 100%;
 }
+
+/* Custom checkbox */
+.checkbox-label {
+  margin-left: 25px;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  appearance: none;
+}
+
+.checkbox-inner {
+  display: inline-block;
+  position: relative;
+  padding: 13px;
+}
+.checkbox-inner:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 36px;
+  background-color: #afafaf;
+  border-radius: 18px;
+  transition: background-color 0.3s;
+}
+.checkbox-inner:after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: background-color 0.3s, left 0.3s;
+}
+
+.checkbox-input:checked + .checkbox-inner:before {
+  background-color: #2CC642;
+}
+
+.checkbox-input:checked + .checkbox-inner:after {
+  background-color: #ffffff;
+  left: 27px;
+}
+
+/* Custom checkbox [end] */
 
 /*# sourceMappingURL=main.css.map */
