@@ -136,11 +136,15 @@ body {
     width: 70%;
   }
   &__input {
+    outline: none;
     background-color: #D9D9D980;
     border: 1px solid #484848;
     border-radius: 0.9rem;
     font-size: 1.5rem;
     padding: 0 1rem;
+  }
+  &__input:focus {
+    box-shadow: 0 0 5px black;
   }
   select {
     max-height: 29.594px;
@@ -162,29 +166,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  //height: 30px;
-  //width: 3rem;
-  //border-radius: 1rem;
-  //background-color: #D9D9D9;
 }
-
 .checkbox-input {
   position: absolute;
   inset: 0;
   opacity: 0;
   z-index: 1;
 }
-
 .checkbox-switch {
   content: "";
   height: 24px;
   width: 45px;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #484848;
   border-radius: 1rem;
   background-color: #D9D9D9;
   transition: background-color .3s;
 }
-
 .checkbox-switch::before {
   position: absolute;
   display: block;
@@ -196,7 +193,6 @@ body {
   background-color: #ffffff;
   transition: all .3s;
 }
-
 .checkbox-switch::after {
   position: absolute;
   display: block;
@@ -207,21 +203,20 @@ body {
   border-radius: 1rem;
   transition: all .1s;
 }
-
 .checkbox-input:checked + .checkbox-switch::before {
   background-color: #2CC642;
   border: 1px solid #2CC642;
   transition: all .1s;
 }
-
 .checkbox-input:checked + .checkbox-switch::after {
   background-color: white;
   transform: translate(100%);
 }
-
-
 .terminal-form:has(input[id="commit-m"]:checked) .checkbox-switch {
   background-color: #2CC642;
+}
+.terminal-form:has(input[id="commit-m"]:focus) .checkbox-switch {
+  box-shadow: 0 0 5px black;
 }
 /* checkbox [end] */
 
