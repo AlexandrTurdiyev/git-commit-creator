@@ -14,16 +14,16 @@
 <header class="header"></header>
 
 <main class="main">
-<div class="container">
+<div class="container container--margin">
     <div class="terminal-wrapper">
         <div class="terminal">
 
             <div class="terminal-header">
                 <div class="terminal-header__inner">
                     <div class="terminal-header__item-wrapper terminal-header__item-wrapper--padding-left">
-                        <div class="terminal-header__item terminal-header__item--red"></div>
-                        <div class="terminal-header__item terminal-header__item--yellow"></div>
-                        <div class="terminal-header__item terminal-header__item--green"></div>
+                        <div class="terminal-header__item-circle terminal-header__item-circle--red"></div>
+                        <div class="terminal-header__item-circle terminal-header__item-circle--yellow"></div>
+                        <div class="terminal-header__item-circle terminal-header__item-circle--green"></div>
                     </div>
                     <div class="terminal-header__item-wrapper terminal-header__item-wrapper--center">
                         <h2 class="terminal-header__title">GIT Commit Creator</h2>
@@ -37,13 +37,10 @@
                     <form class="form terminal-form" id="commitCreatorForm">
                         <div class="terminal-form__item">
                             <div class="terminal-form__label-wrapper">
-                                <label class="terminal-form__label checkbox-label" for="commit-m" >[add git commit -m]
-                                    <input class="terminal-form__input checkbox-input" id="commit-m" type="checkbox" >
-                                    <span class="terminal-form__input-checkbox checkbox-inner"></span>
-                                </label>
+                                <label class="terminal-form__label checkbox-label" for="commit-m" >[add git commit -m]</label>
                             </div>
                             <div class="terminal-form__input-wrapper">
-
+                                <input class="terminal-form__input checkbox-input" id="commit-m" type="checkbox">
                             </div>
                         </div>
 
@@ -80,32 +77,13 @@
                                        id="commitDateTime" type="text" >
                                 <div class="terminal-form__link-wrapper">
                                     <a href="#" class="terminal-form__link">
-                                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g style="mix-blend-mode:difference">
-                                                <path fill-rule="evenodd"
-                                                      clip-rule="evenodd"
-                                                      d="M1.5625 12.5C1.5625 18.5406 6.45939 23.4375 12.5 23.4375C18.5406
-                                                      23.4375 23.4375 18.5406 23.4375 12.5C23.4375 6.45939 18.5406 1.5625
-                                                      12.5 1.5625C6.45939 1.5625 1.5625 6.45939 1.5625 12.5ZM25 12.5C25
-                                                      19.4036 19.4036 25 12.5 25C5.59644 25 0 19.4036 0 12.5C0 5.59644
-                                                      5.59644 0 12.5 0C19.4036 0 25 5.59644 25 12.5ZM7.03125 11.7187C6.59978
-                                                      11.7187 6.25 12.0685 6.25 12.5C6.25 12.9315 6.59978 13.2812 7.03125
-                                                      13.2812H16.0826L12.7288 16.6351C12.4237 16.9402 12.4237 17.4348
-                                                      12.7288 17.7399C13.0339 18.045 13.5286 18.045 13.8337 17.7399L18.5212
-                                                      13.0524C18.8263 12.7473 18.8263 12.2527 18.5212 11.9476L13.8337
-                                                      7.26007C13.5286 6.95497 13.0339 6.95497 12.7288 7.26007C12.4237
-                                                      7.56517 12.4237 8.05983 12.7288 8.36493L16.0826 11.7187H7.03125Z"
-                                                      fill="#FFFFFF"/>
-                                            </g>
-                                        </svg>
-
                                     </a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="terminal-form__item">
-                            <div class="terminal-form__label-wrapper">
+                            <div class="terminal-form__label-wrapper terminal-form__label-wrapper--full-height">
                                 <label class="terminal-form__label" for="commitDescription" >&lt;description&gt;</label>
                             </div>
                             <div class="terminal-form__input-wrapper">
@@ -139,12 +117,13 @@
 
                             </div>
                             <div class="terminal-form__input-wrapper">
-                                <button class="terminal-form__input terminal-form__btn">create</button>
+                                <button type="submit" class="terminal-form__input create-btn">create</button>
+                                <button type="submit" class="terminal-form__input copy-btn">copy</button>
                             </div>
                         </div>
 
                         <div class="terminal-form__item">
-                            <div class="terminal-form__label-wrapper">
+                            <div class="terminal-form__label-wrapper terminal-form__label-wrapper--full-height">
                                 <label class="terminal-form__label" for="commitResult" >[result]</label>
                             </div>
                             <div class="terminal-form__input-wrapper">
