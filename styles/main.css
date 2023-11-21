@@ -133,7 +133,6 @@ body {
   display: flex;
   align-items: center;
   width: 70%;
-  gap: 1rem;
 }
 .terminal-form__input {
   background-color: rgba(217, 217, 217, 0.5019607843);
@@ -148,6 +147,74 @@ body {
 .terminal-form__input--full-width {
   width: 100%;
 }
+.terminal-form .copy-btn {
+  margin-left: 1rem;
+}
+
+/* checkbox */
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.checkbox-switch {
+  content: "";
+  height: 24px;
+  width: 45px;
+  border: 1px solid #D9D9D9;
+  border-radius: 1rem;
+  background-color: #D9D9D9;
+  transition: background-color 0.3s;
+}
+
+.checkbox-switch::before {
+  position: absolute;
+  display: block;
+  content: "";
+  min-height: 20px;
+  width: 20px;
+  border: 1px solid #D9D9D9;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  transition: all 0.3s;
+}
+
+.checkbox-switch::after {
+  position: absolute;
+  display: block;
+  content: "";
+  min-height: 20px;
+  width: 20px;
+  border: 1px solid #D9D9D9;
+  border-radius: 1rem;
+  transition: all 0.1s;
+}
+
+.checkbox-input:checked + .checkbox-switch::before {
+  background-color: #2CC642;
+  border: 1px solid #2CC642;
+  transition: all 0.1s;
+}
+
+.checkbox-input:checked + .checkbox-switch::after {
+  background-color: white;
+  transform: translate(100%);
+}
+
+.terminal-form:has(input[id=commit-m]:checked) .checkbox-switch {
+  background-color: #2CC642;
+}
+
+/* checkbox [end] */
 /* terminal-form [end] */
 /* terminal-body [end] */
 /* MAIN [end] */
