@@ -127,10 +127,11 @@ body {
     height: 100%;
   }
   &__label {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     white-space: nowrap;
   }
   &__input-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     width: 70%;
@@ -142,18 +143,46 @@ body {
     border-radius: 0.9rem;
     font-size: 1.5rem;
     padding: 0 1rem;
+    transition: background-color .5s;
+  }
+  &__input--red {
+    background-color: #ffe1dd;
   }
   &__input:focus {
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 0 5px #484848;
   }
   select {
     max-height: 29.594px;
+  }
+  .commit-date-time {
+    min-height: 1.8rem;
+    font-size: 1.5rem;
+    border-right: 1px solid #D9D9D9;
+    border-radius: 1rem 0 0 1rem;
+    transition: font-size 1s ease-in-out;
+    &--small-text {
+      font-size: 0.9rem;
+      transition: font-size 1s ease-in-out;
+    }
   }
   &__input--full-width {
     width: 100%;
   }
   &__link-wrapper {}
   &__link {}
+  .button {
+    &:hover {
+      box-shadow: 0 0 5px #484848;
+    }
+    &:active {
+      transform: scale(0.99);
+      box-shadow: none;
+    }
+  }
+  .current-date-btn {
+    inset: auto 0 auto auto;
+    border-radius: 0 1rem 1rem 0;
+  }
   .create-btn {}
   .copy-btn {
     margin-left: 1rem;
@@ -176,7 +205,7 @@ body {
 .checkbox-switch {
   content: "";
   height: 24px;
-  width: 45px;
+  width: 46px;
   border: 1px solid #484848;
   border-radius: 1rem;
   background-color: #D9D9D9;
@@ -212,10 +241,10 @@ body {
   background-color: white;
   transform: translate(100%);
 }
-.terminal-form:has(input[id="commit-m"]:checked) .checkbox-switch {
+.terminal-form:has(input[id="commitM"]:checked) .checkbox-switch {
   background-color: #2CC642;
 }
-.terminal-form:has(input[id="commit-m"]:focus) .checkbox-switch {
+.terminal-form:has(input[id="commitM"]:focus) .checkbox-switch {
   box-shadow: 0 0 5px black;
 }
 /* checkbox [end] */
