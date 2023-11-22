@@ -37,6 +37,8 @@ let commitMText = "",
 
 /* preview */
 const previewWindow = document.querySelector('.preview');
+const terminalWindowTitle = document.querySelector('.terminal-header__title');
+const previewCommitText = document.querySelector('.preview__text');
 /* preview [end] */
 
 /* --------------------------------------------------------------- */
@@ -66,9 +68,10 @@ function checkBoxGetValue (checkbox) {
 /* checkbox checked, true or false [end] */
 
 /* checkbox value to result text */
-function checkBoxResult (checkBoxChecked, checkboxResultVar) {
-    checkboxResultVar = checkBoxChecked ? "git commit -m " : " ";
+function checkBoxResult (checkBoxChecked) {
+    let checkboxResultVar = checkBoxChecked.checked ? "git commit -m " : " ";
     commitMText = checkboxResultVar;
+    console.log('checkbox result:', checkboxResultVar);
     return checkboxResultVar;
 }
 /* checkbox value to result text [end] */
@@ -83,21 +86,18 @@ function allRequiredInputsCheck (inputsArr) {
         if (element.tagName.toLowerCase() === "select") {
             if (element.value !== "select") {
                 element.classList.remove('terminal-form__input--red');
-                console.log('select: ', element.value)
             } else {
                 element.classList.add('terminal-form__input--red');
             }
         } else if (element.tagName.toLowerCase() === "input") {
             if (element.value !== "") {
                 element.classList.remove('terminal-form__input--red');
-                console.log('input: ', element.value)
             } else {
                 element.classList.add('terminal-form__input--red');
             }
         } else if (element.tagName.toLowerCase() === "textarea") {
             if (element.value !== "") {
                 element.classList.remove('terminal-form__input--red');
-                console.log('textarea: ', element.value)
             } else {
                 element.classList.add('terminal-form__input--red');
             }
@@ -108,7 +108,6 @@ function isInputEmpty (input) {
     if (input.tagName.toLowerCase() === "select") {
         if (input.value !== "select") {
             input.classList.remove('terminal-form__input--red');
-            console.log('select: ', input.value)
             return true;
         } else {
             input.classList.add('terminal-form__input--red');
@@ -118,7 +117,6 @@ function isInputEmpty (input) {
     } else if (input.tagName.toLowerCase() === "input") {
         if (input.value !== "") {
             input.classList.remove('terminal-form__input--red');
-            console.log('input: ', input.value)
             return true;
         } else {
             input.classList.add('terminal-form__input--red');
@@ -128,7 +126,6 @@ function isInputEmpty (input) {
     } else if (input.tagName.toLowerCase() === "textarea") {
         if (input.value !== "") {
             input.classList.remove('terminal-form__input--red');
-            console.log('textarea: ', input.value)
             return true;
         } else {
             input.classList.add('terminal-form__input--red');
@@ -136,7 +133,6 @@ function isInputEmpty (input) {
             return false;
         }
     }
-    console.log(input, input.value !== "");
 }
 /* check inputs [end] */
 /* --------------------------------------------------------------- */
@@ -157,20 +153,44 @@ function stringConcatenation () {
         optionalCommitBodyText = getTextFromInput(optionalCommitBody);
         optionalCommitFooterText = getTextFromInput(optionalCommitFooter);
 
+        if (checkBoxResult(commitM) === "") {
+            commitMText = "";
+        }
+
         if (optionalCommitScopeText !== "") {
             selectCommitTypeText = selectCommitTypeText.slice(0, -1);
             optionalCommitScopeText =
                 "(" + optionalCommitScopeText + ")" + ":";
         }
+
+        if (optionalCommitBodyText !== "") {
+            commitDateTimeText = commitDateTimeText + "; \n" + " \n";
+            if (optionalCommitFooterText !== "") {
+                optionalCommitBodyText =
+                    optionalCommitBodyText + "; \n" + " \n";
+            } else {
+                optionalCommitBodyText =
+                    optionalCommitBodyText + ";";
+            }
+
+        } else {
+            commitDateTimeText = commitDateTimeText + ";";
+        }
+
+        if (optionalCommitFooterText !== "") {
+            commitDateTimeText = commitDateTimeText + "\n" + " \n";
+            optionalCommitFooterText =
+                optionalCommitFooterText + ";";
+        }
+
         let result =
             commitMText +
             selectCommitTypeText +
             optionalCommitScopeText + " " +
             commitDescriptionText + "; \n" + " \n" +
-            commitDateTimeText + "; \n" + " \n" +
-            optionalCommitBodyText + "; \n" + " \n" +
-            optionalCommitFooterText + ";";
-        console.log("result:" + result)
+            commitDateTimeText +
+            optionalCommitBodyText +
+            optionalCommitFooterText;
         return result;
     } else {
         return "Not all required fields are filled in";
@@ -189,6 +209,9 @@ function setResultData (data) {
 
 /* --------------------------------------------------------------- */
 /* REQUIRED INPUTS LISTENERS */
+commitM.addEventListener('input', () => {
+    commitMText = checkBoxResult(commitM);
+})
 selectCommitType.addEventListener('input', () => {
     isInputEmpty(selectCommitType);
 })
@@ -210,7 +233,6 @@ function getDate () {
 currentDateBtn.addEventListener('click', (event) => {
     commitDateTime.classList.remove('commit-date-time--small-text');
     commitDateTimeText = getDate();
-    console.log(commitDateTimeText);
     commitDateTime.value = commitDateTimeText;
     isInputEmpty(commitDateTime);
     commitDateTime.classList.add('commit-date-time--small-text');
@@ -233,6 +255,8 @@ copyBtn.addEventListener('click', (event) => {
 previewBtn.addEventListener('click', (event) => {
     previewWindow.classList.add('preview--visible');
     backBtn.classList.add('back-btn--visible')
+    terminalWindowTitle.innerText = "GIT Commit Creator - Preview";
+    previewCommitText.innerText = stringConcatenation();
 })
 /* preview [end] */
 
@@ -240,6 +264,7 @@ previewBtn.addEventListener('click', (event) => {
 backBtn.addEventListener('click', (event) => {
     previewWindow.classList.remove('preview--visible');
     backBtn.classList.remove('back-btn--visible')
+    terminalWindowTitle.innerText = "GIT Commit Creator";
 })
 /* back to commit creator [end] */
 
