@@ -8,7 +8,7 @@ const commitM = document.getElementById('commitM'),
     commitDescription= document.getElementById('commitDescription'),
     optionalCommitBody= document.getElementById('optionalCommitBody'),
     optionalCommitFooter= document.getElementById('optionalCommitFooter'),
-    commitResult= document.getElementById('commitResult'),
+    commitResult= document.getElementById('commitResult');
     allRequiredInputs = [
         selectCommitType,
         commitDateTime,
@@ -17,9 +17,11 @@ const commitM = document.getElementById('commitM'),
 /* inputs [end] */
 
 /* buttons */
-    currentDateBtn = document.querySelector('.current-date-btn'),
+const currentDateBtn = document.querySelector('.current-date-btn'),
     createBtn = document.querySelector('.create-btn'),
-    copyBtn = document.querySelector('.copy-btn');
+    copyBtn = document.querySelector('.copy-btn'),
+    previewBtn = document.querySelector('.preview-btn'),
+    backBtn = document.querySelector('.back-btn');
 /* buttons [end] */
 
 /* outputs */
@@ -32,6 +34,10 @@ let commitMText = "",
     optionalCommitFooterText = "",
     commitResultText = "";
 /* outputs [end] */
+
+/* preview */
+const previewWindow = document.querySelector('.preview');
+/* preview [end] */
 
 /* --------------------------------------------------------------- */
 /* GET DATA FROM TEXT INPUTS */
@@ -222,6 +228,21 @@ copyBtn.addEventListener('click', (event) => {
     CopyTextFromInput(commitResult);
 })
 /* copy commit text [end] */
+
+/* preview */
+previewBtn.addEventListener('click', (event) => {
+    previewWindow.classList.add('preview--visible');
+    backBtn.classList.add('back-btn--visible')
+})
+/* preview [end] */
+
+/* back to commit creator */
+backBtn.addEventListener('click', (event) => {
+    previewWindow.classList.remove('preview--visible');
+    backBtn.classList.remove('back-btn--visible')
+})
+/* back to commit creator [end] */
+
 /* BUTTONS LISTENERS */
 
 /* --------------------------------------------------------------- */

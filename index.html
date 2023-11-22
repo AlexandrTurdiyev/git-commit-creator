@@ -28,11 +28,28 @@
                     <div class="terminal-header__item-wrapper terminal-header__item-wrapper--center">
                         <h2 class="terminal-header__title">GIT Commit Creator</h2>
                     </div>
-                    <div class="terminal-header__item-wrapper"></div>
+                    <div class="terminal-header__item-wrapper">
+                        <button type="button" class="back-btn">&ltBack</button>
+                    </div>
                 </div>
             </div>
 
             <div class="terminal-body">
+
+                <div class="preview">
+                    <div class="preview__inner">
+                        <p class="preview__text">
+                            # git commit -m init(commit optional): commit description;<br>
+                            # <br>
+                            # Wed Nov 22 2023 23:02:36 GMT+0530 (India Standard Time);<br>
+                            # <br>
+                            # commit body;<br>
+                            # <br>
+                            # commit footer;
+                        </p>
+                    </div>
+                </div>
+
                 <div class="terminal-form-wrapper">
                     <form class="form terminal-form" id="commitCreatorForm">
                         <div class="terminal-form__item">
@@ -120,6 +137,7 @@
                             <div class="terminal-form__input-wrapper">
                                 <button type="button" class="terminal-form__input button create-btn">create</button>
                                 <button type="button" class="terminal-form__input button copy-btn">copy</button>
+                                <button type="button" class="terminal-form__input button preview-btn">preview</button>
                             </div>
                         </div>
 

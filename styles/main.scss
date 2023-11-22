@@ -59,12 +59,14 @@ body {
   background-color: $terminalHeaderColor;
   height: $tHeaderHeight;
   border-radius: 20px 20px 0 0;
+  overflow: hidden;
   &__inner {
     display: flex;
     justify-content: space-between;
     height: inherit;
   }
   &__item-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     height: inherit;
@@ -94,11 +96,73 @@ body {
 
 /* terminal-body */
 .terminal-body {
+  position: relative;
   background-color: $terminalBodyColor;
   height: calc(100% - $tHeaderHeight);
   width: 100%;
   border-radius: 0 0 20px 20px;
 }
+
+/* PREVIEW */
+.preview {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  inset: 0;
+  background-color: transparent;
+  z-index: -0.1;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s linear;
+  border-radius: 0 0 1rem 1rem;
+  &--visible {
+    background-color: #070806;
+    z-index: 1;
+    visibility: visible;
+    opacity: 1;
+  }
+  &__inner {
+    width: calc(100% - 3rem);
+    padding-top: 2rem;
+  }
+  &__text {
+    color: #FFFFFF;
+    font-family: CallingCode-Regular, monospace;
+    font-size: 1.5rem;
+  }
+}
+.back-btn {
+  background-color: #D9D9D9;
+  color: #484848;
+  position: absolute;
+  inset: 5px 5px 5px 50%;
+  border: 1px solid #484848;
+  border-radius: 0 1rem 0 0;
+  transform: scale(0.99);
+  box-shadow: none;
+  font-family: Oswald, monospace;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  font-weight: 700;
+  z-index: -0.1;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 5px #484848;
+  }
+  &:active {
+    box-shadow: none;
+  }
+  &--visible {
+    z-index: 1;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+  /* PREVIEW [end] */
+
 /* terminal-form */
 .terminal-form-wrapper {
   height: 100%;
@@ -181,12 +245,13 @@ body {
   }
   .current-date-btn {
     inset: auto 0 auto auto;
-    border-radius: 0 1rem 1rem 0;
+    border-radius: 0 0.9rem 0.9rem 0;
   }
   .create-btn {}
   .copy-btn {
-    margin-left: 1rem;
+    margin: 0 1rem 0 1rem;
   }
+  .preview-btn {}
 }
 
 /* checkbox */
