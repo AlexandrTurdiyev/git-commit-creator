@@ -1,0 +1,327 @@
+/* Fonts */
+@font-face {
+  font-family: 'CallingCode-Regular';
+  src: url('fonts/CallingCode-Regular.ttf') format('truetype');
+} /* Font: CallingCode-Regular */
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+} /* Font: Oswald */
+/* Fonts [end] */
+
+/* Variables */
+$headerHeight: 10vh;
+$terminalHeaderColor: #D9D9D9;
+
+$tHeaderHeight: 50px;
+$tHeaderCircleHeight: 20px;
+$tHeaderCircleWidth: 20px;
+
+$terminalBodyColor: #ffffff;
+
+$footerHeight: 10vh;
+/* Variables [end] */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e8e8e8;
+}
+
+/* HEADER */
+.header {
+  height: $headerHeight;
+}
+/* HEADER [end] */
+
+/* MAIN */
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  height: calc(100vh - $headerHeight - $footerHeight);
+}
+
+.terminal-wrapper {
+  border-radius: 20px;
+  box-shadow: 4px 4px 15px #00000040;
+}
+.terminal {
+  height: inherit;
+}
+
+/* terminal-header */
+.terminal-header {
+  background-color: $terminalHeaderColor;
+  height: $tHeaderHeight;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    height: inherit;
+  }
+  &__item-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: inherit;
+    width: 33.3%;
+  }
+  &__item-circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-left: 15px;
+  }
+  &__title {
+    color: #484848;
+    font-family: Oswald, monospace;
+    font-size: 1.5rem;
+    white-space: nowrap;
+  }
+  &__item-wrapper--padding-left {padding-left: 5px}
+  &__item-wrapper--center {
+    justify-content: center;
+  }
+  &__item-circle--red {background-color: #FD6154;}
+  &__item-circle--yellow {background-color: #FDBB30;}
+  &__item-circle--green {background-color: #2CC642;}
+}
+/* terminal-header [end] */
+
+/* terminal-body */
+.terminal-body {
+  position: relative;
+  background-color: $terminalBodyColor;
+  height: calc(100% - $tHeaderHeight);
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+}
+
+/* PREVIEW */
+.preview {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  inset: 0;
+  background-color: transparent;
+  z-index: -0.1;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s linear;
+  border-radius: 0 0 1rem 1rem;
+  &--visible {
+    background-color: #070806;
+    z-index: 1;
+    visibility: visible;
+    opacity: 1;
+  }
+  &__inner {
+    width: calc(100% - 3rem);
+    padding-top: 2rem;
+  }
+  &__text {
+    color: #FFFFFF;
+    font-family: CallingCode-Regular, monospace;
+    font-size: 1.5rem;
+  }
+}
+.back-btn {
+  background-color: #D9D9D9;
+  color: #484848;
+  position: absolute;
+  inset: 5px 5px 5px 50%;
+  border: 1px solid #484848;
+  border-radius: 0 1rem 0 0;
+  transform: scale(0.99);
+  box-shadow: none;
+  font-family: Oswald, monospace;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  font-weight: 700;
+  z-index: -0.1;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 5px #484848;
+  }
+  &:active {
+    box-shadow: none;
+  }
+  &--visible {
+    z-index: 1;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+  /* PREVIEW [end] */
+
+/* terminal-form */
+.terminal-form-wrapper {
+  height: 100%;
+  padding: 1rem 0;
+}
+.terminal-form {
+  font-family: CallingCode-Regular, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  gap: 1rem;
+  &__item {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 3rem);
+  }
+  &__label-wrapper {
+    text-align: end;
+    height: 100%;
+    width: 30%;
+    padding-right: 1rem;
+  }
+  &__label-wrapper--full-height {
+    height: 100%;
+  }
+  &__label {
+    font-size: 1.4rem;
+    white-space: nowrap;
+  }
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 70%;
+  }
+  &__input {
+    outline: none;
+    background-color: #D9D9D980;
+    border: 1px solid #484848;
+    border-radius: 0.9rem;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    transition: background-color .5s;
+  }
+  &__input--red {
+    background-color: #ffe1dd;
+  }
+  &__input:focus {
+    box-shadow: 0 0 5px #484848;
+  }
+  select {
+    max-height: 29.594px;
+  }
+  .commit-date-time {
+    min-height: 1.8rem;
+    font-size: 1.5rem;
+    border-right: 1px solid #D9D9D9;
+    border-radius: 1rem 0 0 1rem;
+    transition: font-size 1s ease-in-out;
+    &--small-text {
+      font-size: 0.9rem;
+      transition: font-size 1s ease-in-out;
+    }
+  }
+  &__input--full-width {
+    width: 100%;
+  }
+  &__link-wrapper {}
+  &__link {}
+  .button {
+    &:hover {
+      box-shadow: 0 0 5px #484848;
+    }
+    &:active {
+      transform: scale(0.99);
+      box-shadow: none;
+    }
+  }
+  .current-date-btn {
+    inset: auto 0 auto auto;
+    border-radius: 0 0.9rem 0.9rem 0;
+  }
+  .create-btn {}
+  .copy-btn {
+    margin: 0 1rem 0 1rem;
+  }
+  .preview-btn {}
+}
+
+/* checkbox */
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.checkbox-switch {
+  content: "";
+  height: 24px;
+  width: 46px;
+  border: 1px solid #484848;
+  border-radius: 1rem;
+  background-color: #D9D9D9;
+  transition: background-color .3s;
+}
+.checkbox-switch::before {
+  position: absolute;
+  display: block;
+  content: "";
+  min-height: 20px;
+  width: 20px;
+  border: 1px solid #D9D9D9;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  transition: all .3s;
+}
+.checkbox-switch::after {
+  position: absolute;
+  display: block;
+  content: "";
+  min-height: 20px;
+  width: 20px;
+  border: 1px solid #D9D9D9;
+  border-radius: 1rem;
+  transition: all .1s;
+}
+.checkbox-input:checked + .checkbox-switch::before {
+  background-color: #2CC642;
+  border: 1px solid #2CC642;
+  transition: all .1s;
+}
+.checkbox-input:checked + .checkbox-switch::after {
+  background-color: white;
+  transform: translate(100%);
+}
+.terminal-form:has(input[id="commitM"]:checked) .checkbox-switch {
+  background-color: #2CC642;
+}
+.terminal-form:has(input[id="commitM"]:focus) .checkbox-switch {
+  box-shadow: 0 0 5px black;
+}
+/* checkbox [end] */
+
+/* terminal-form [end] */
+/* terminal-body [end] */
+
+/* MAIN [end] */
+
+/* FOOTER */
+.footer {
+  height: $footerHeight;
+}
+/* FOOTER [end] */
+
