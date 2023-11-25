@@ -1,5 +1,4 @@
 let form = document.getElementById(".form");
-
 /* inputs*/
 const commitM = document.getElementById('commitM'),
     selectCommitType = document.getElementById('selectCommitType'),
@@ -61,17 +60,10 @@ function getTextFromInput (input) {
 
 /* --------------------------------------------------------------- */
 /* CHECKBOX value */
-/* checkbox checked, true or false */
-function checkBoxGetValue (checkbox) {
-    return checkbox.checked;
-}
-/* checkbox checked, true or false [end] */
-
 /* checkbox value to result text */
 function checkBoxResult (checkBoxChecked) {
     let checkboxResultVar = checkBoxChecked.checked ? "git commit -m " : " ";
     commitMText = checkboxResultVar;
-    console.log('checkbox result:', checkboxResultVar);
     return checkboxResultVar;
 }
 /* checkbox value to result text [end] */
@@ -157,6 +149,7 @@ function stringConcatenation () {
             commitMText = "";
         }
 
+
         if (optionalCommitScopeText !== "") {
             selectCommitTypeText = selectCommitTypeText.slice(0, -1);
             optionalCommitScopeText =
@@ -177,20 +170,23 @@ function stringConcatenation () {
             commitDateTimeText = commitDateTimeText + ";";
         }
 
-        if (optionalCommitFooterText !== "") {
+        if (optionalCommitFooterText !== "" && optionalCommitBodyText === "") {
             commitDateTimeText = commitDateTimeText + "\n" + " \n";
+            optionalCommitFooterText =
+                optionalCommitFooterText + ";";
+        } else if (optionalCommitFooterText !== "" && optionalCommitBodyText !== "") {
             optionalCommitFooterText =
                 optionalCommitFooterText + ";";
         }
 
         let result =
-            commitMText +
+            commitMText + "'" +
             selectCommitTypeText +
             optionalCommitScopeText + " " +
             commitDescriptionText + "; \n" + " \n" +
             commitDateTimeText +
             optionalCommitBodyText +
-            optionalCommitFooterText;
+            optionalCommitFooterText + "'";
         return result;
     } else {
         return "Not all required fields are filled in";
